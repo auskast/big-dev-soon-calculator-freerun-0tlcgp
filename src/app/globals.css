@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 @layer components {
-  .header-lg {
+  .heading-lg {
     @apply text-[58px] font-semibold -tracking-[0.29px];
   }
 
-  .header-md {
+  .heading-md {
     @apply text-[33px] font-medium leading-[1.6] tracking-[0.25px];
   }
 
-  .header-sm {
+  .heading-sm {
     @apply text-[23px] font-medium leading-[1.6];
   }
 }

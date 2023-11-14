@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={clsx(
-          // "bg-background text-black-87 body",
+          "bg-indygo-200 text-gray-900 dark:text-white",
           inter.className,
         )}
       >

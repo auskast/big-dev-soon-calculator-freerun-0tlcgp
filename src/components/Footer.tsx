@@ -3,7 +3,7 @@ import * as React from "react";
 import clsx from "clsx";
 
 const Footer = () => (
-  <footer className="absolute bottom-0 left-0 right-0 p-2 text-center text-sm">
+  <footer className="p-2 text-center text-sm">
     <FooterLink
       href="https://bigdevsoon.me"
       target="_blank"
