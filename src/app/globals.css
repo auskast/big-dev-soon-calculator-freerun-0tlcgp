@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .header-lg {
+    @apply text-[58px] font-semibold -tracking-[0.29px];
+  }
+
+  .header-md {
+    @apply text-[33px] font-medium leading-[1.6] tracking-[0.25px];
+  }
+
+  .header-sm {
+    @apply text-[23px] font-medium leading-[1.6];
+  }
+}
