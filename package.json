@@ -1,0 +1,45 @@
+{
+  "name": "big-dev-soon-calculator-freerun-0tlcgp",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "prepare": "husky install",
+    "pretty": "prettier --check .",
+    "pretty:fix": "prettier --write .",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,ts,tsx,html,css,md,mdx}": "prettier --ignore-unknown --write",
+    "*.{js,jsx,ts,tsx}": "eslint --cache"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "next": "14.0.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "sharp": "^0.32.6"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.2",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.1.0",
+    "postcss": "^8",
+    "prettier": "^3.1.0",
+    "prettier-plugin-packagejson": "^2.4.6",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@8.10.4"
+}

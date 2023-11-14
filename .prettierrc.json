@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "plugins": [
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-packagejson"
+  ],
+  "importOrder": [
+    "^(next/(.*)$)|^(next$)",
+    "^(react/(.*)$)|^(react$)|^(react-dom/(.*)$)|^(react-dom$)",
+    "<THIRD_PARTY_MODULES>",
+    "^@/(.*)$",
+    "^\\.\\./(.*)$",
+    "^[./]"
+  ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
+}
