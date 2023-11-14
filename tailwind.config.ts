@@ -30,6 +30,9 @@ const config: Config = {
       "white/8": "rgba(255, 255, 255, 0.08)",
     },
     extend: {
+      boxShadow: {
+        container: "0px 10px 20px rgba(0, 0, 0, 0.15)",
+      },
       dropShadow: {
         button: "0px 10px 20px rgba(0, 0, 0, 0.15)",
       },
