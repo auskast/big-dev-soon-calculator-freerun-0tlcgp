@@ -8,7 +8,8 @@ export const Container = ({ className, ...props }: ContainerProps) => {
   return (
     <div
       className={clsx(
-        "max-w-[616px] w-full max-h-[841px] h-full rounded-3xl p-8 shadow-container bg-calc-bg-light",
+        "min-w-[440px] w-[616px] h-[841px] rounded-3xl p-8 shadow-container",
+        "bg-calc-bg-light dark:bg-calc-bg-dark",
         className,
       )}
       {...props}

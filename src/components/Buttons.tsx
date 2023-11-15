@@ -40,7 +40,12 @@ export const Buttons = () => {
   }, [onButtonPress]);
 
   return (
-    <div className="grid grid-cols-4 gap-8 p-8 -ml-8 -mr-8 -mb-8 bg-[#fafafa] rounded-3xl">
+    <div
+      className={clsx(
+        "grid grid-cols-4 gap-8 p-8 -ml-8 -mr-8 -mb-8 rounded-3xl",
+        "bg-[#fafafa] dark:bg-calc-surface",
+      )}
+    >
       <CommandButton command="AC" label="clear all" onPress={onButtonPress} />
       <CommandButton command="C" label="clear input" onPress={onButtonPress} />
       <CommandButton command="%" label="percentage" onPress={onButtonPress} />
@@ -66,16 +71,22 @@ export const Buttons = () => {
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {}
 
-const Button = ({ className, ...props }: ButtonProps) => {
+const Button = ({ className, children, ...props }: ButtonProps) => {
   return (
     <button
       type="button"
       className={clsx(
-        "leading-[72px] drop-shadow-button rounded-md heading-md",
+        "min-w-[64px] leading-[72px] drop-shadow-button rounded-md heading-md relative",
         className,
       )}
       {...props}
-    />
+    >
+      <div
+        aria-hidden
+        className="absolute top-0 left-0 bottom-0 right-0 rounded-md hover:bg-gray-900/8 hover:dark:bg-white/8 transition-colors"
+      />
+      {children}
+    </button>
   );
 };
 
@@ -90,16 +101,18 @@ const NumberButton = ({
   className,
   ...props
 }: NumberButtonProps) => (
-  <Button
-    className={clsx("bg-white", className)}
-    {...props}
-    onPointerDown={() => onPress(digit)}
-    onKeyDown={(event) => {
-      if (event.key === " ") onPress(digit);
-    }}
-  >
-    {digit}
-  </Button>
+  <>
+    <Button
+      className={clsx("bg-white dark:bg-calc-btn-dark", className)}
+      {...props}
+      onPointerDown={() => onPress(digit)}
+      onKeyDown={(event) => {
+        if (event.key === " ") onPress(digit);
+      }}
+    >
+      {digit}
+    </Button>
+  </>
 );
 
 type OperatorOperator = Extract<Operator, "*" | "/" | "-" | "+" | "=">;
@@ -119,8 +132,8 @@ const OperatorButton = ({
   <Button
     className={clsx(
       operator === "="
-        ? "bg-red-400 text-white fill-white"
-        : "bg-white text-red-400 fill-red-400",
+        ? "bg-red-400 dark:bg-red-200 text-white fill-white"
+        : "bg-white dark:bg-calc-btn-dark text-red-400: dark:text-red-200 fill-red-400 dark:fill-red-200",
     )}
     {...props}
     onPointerDown={() => onPress(operator)}
@@ -148,7 +161,10 @@ const CommandButton = ({
   ...props
 }: CommandButtonProps) => (
   <Button
-    className={clsx("bg-white text-blue-400 fill-blue-400", className)}
+    className={clsx(
+      "bg-white dark:bg-calc-btn-dark text-blue-400 dark:text-blue-200 fill-blue-400 dark:fill-blue-200",
+      className,
+    )}
     {...props}
     onPointerDown={() => onPress(command)}
     onKeyDown={(event) => {

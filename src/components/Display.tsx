@@ -9,11 +9,11 @@ export const Display = () => {
 
   return (
     <div className="flex flex-col gap-2 text-right my-4">
-      <div className="min-h-[55px] flex gap-1 overflow-x-auto justify-end">
+      <div className="min-h-[55px] flex gap-1 overflow-x-auto justify-end items-center">
         {operations.map((op, key) => {
           if (/\d/.test(op)) {
             return (
-              <span key={key} className="heading-md">
+              <span key={key} className="heading-sm md:heading-md">
                 {op}
               </span>
             );
@@ -25,21 +25,22 @@ export const Display = () => {
             return (
               <Icon
                 key={key}
-                width={24}
-                height={24}
-                className="fill-red-400 self-center"
+                className="fill-red-400 dark:fill-red-200 w-4 md:w-6 h-4 md:h-6"
               />
             );
           }
 
           return (
-            <span key={key} className="text-red-400 text-3xl self-center">
+            <span
+              key={key}
+              className="text-red-400 dark:text-red-200 text-xl md:text-3xl"
+            >
               {op}
             </span>
           );
         })}
       </div>
-      <div className="heading-lg">{input}</div>
+      <div className="heading-md md:heading-lg">{input}</div>
     </div>
   );
 };
