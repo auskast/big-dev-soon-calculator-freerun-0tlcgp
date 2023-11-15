@@ -94,6 +94,9 @@ const NumberButton = ({
     className={clsx("bg-white", className)}
     {...props}
     onPointerDown={() => onPress(digit)}
+    onKeyDown={(event) => {
+      if (event.key === " ") onPress(digit);
+    }}
   >
     {digit}
   </Button>
@@ -121,6 +124,9 @@ const OperatorButton = ({
     )}
     {...props}
     onPointerDown={() => onPress(operator)}
+    onKeyDown={(event) => {
+      if (event.key === " ") onPress(operator);
+    }}
   >
     <ButtonIcon operator={operator} aria-label={label} />
   </Button>
@@ -145,6 +151,9 @@ const CommandButton = ({
     className={clsx("bg-white text-blue-400 fill-blue-400", className)}
     {...props}
     onPointerDown={() => onPress(command)}
+    onKeyDown={(event) => {
+      if (event.key === " ") onPress(command);
+    }}
   >
     {command === "AC" || command === "C" ? (
       command

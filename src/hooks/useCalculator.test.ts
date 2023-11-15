@@ -374,6 +374,34 @@ const testCases: {
       { input: "=", state: { input: "1.000000000e+28", operations: [] } },
     ],
   },
+  {
+    description: "converts number to percent",
+    sequence: [
+      { input: 1, state: { input: "1", operations: [] } },
+      { input: 5, state: { input: "15", operations: [] } },
+      { input: "%", state: { input: "0.15", operations: [] } },
+      { input: "%", state: { input: "0.0015", operations: [] } },
+    ],
+  },
+  {
+    description: "clears current calculation",
+    sequence: [
+      { input: 1, state: { input: "1", operations: [] } },
+      { input: "*", state: { input: "0", operations: ["1", "*"] } },
+      { input: 3, state: { input: "3", operations: ["1", "*"] } },
+      { input: "C", state: { input: "0", operations: ["1", "*"] } },
+      { input: "C", state: { input: "0", operations: ["1", "*"] } },
+    ],
+  },
+  {
+    description: "resets calculator",
+    sequence: [
+      { input: 1, state: { input: "1", operations: [] } },
+      { input: "*", state: { input: "0", operations: ["1", "*"] } },
+      { input: 3, state: { input: "3", operations: ["1", "*"] } },
+      { input: "AC", state: { input: "0", operations: [] } },
+    ],
+  },
 ];
 
 testCases.forEach((tc) => {
