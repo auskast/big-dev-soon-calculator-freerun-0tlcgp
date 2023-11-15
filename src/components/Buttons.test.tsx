@@ -63,7 +63,7 @@ const buttonEvents: {
   },
 ];
 
-it("handles pointer events", async () => {
+function renderTest() {
   const onButtonPress = vi.fn();
 
   render(<Buttons />, {
@@ -75,6 +75,12 @@ it("handles pointer events", async () => {
     ),
   });
 
+  return onButtonPress;
+}
+
+it("handles pointer events", async () => {
+  const onButtonPress = renderTest();
+
   for (const { button, event } of buttonEvents) {
     await userEvent.click(button());
     expect(onButtonPress).toHaveBeenCalledWith(event);
@@ -82,19 +88,19 @@ it("handles pointer events", async () => {
 });
 
 it("handles keyboard events", async () => {
-  const onButtonPress = vi.fn();
-
-  const { container } = render(<Buttons />, {
-    wrapper: (props) => (
-      <CalculatorContext.Provider
-        value={{ input: "", operations: [], onButtonPress }}
-        {...props}
-      />
-    ),
-  });
+  const onButtonPress = renderTest();
 
   for (const { key, event } of buttonEvents) {
     await userEvent.keyboard(key);
+    expect(onButtonPress).toHaveBeenCalledWith(event);
+  }
+});
+
+it("handles spacebar", async () => {
+  const onButtonPress = renderTest();
+
+  for (const { button, event } of buttonEvents) {
+    await userEvent.type(button(), " ");
     expect(onButtonPress).toHaveBeenCalledWith(event);
   }
 });
