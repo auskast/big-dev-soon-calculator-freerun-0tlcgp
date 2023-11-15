@@ -56,13 +56,20 @@ function reducer(
     case "=":
       return state.isError ? state : performOperation(state, action.type);
     case ".":
+      if (state.shouldClear || state.isError) {
+        return {
+          ...initialState,
+          input: "0.",
+        };
+      }
+
       if (state.input.includes(".")) {
         return state;
       }
 
       return {
         ...state,
-        input: state.isError ? "0." : state.input + ".",
+        input: state.input + ".",
         shouldClear: false,
         isError: false,
       };

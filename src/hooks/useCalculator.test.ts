@@ -50,17 +50,31 @@ const testCases: {
   {
     description: "clears input on next digit after `=`",
     sequence: [
-      { input: 1, state: { input: "1" } },
-      { input: "=", state: { input: "1" } },
-      { input: 2, state: { input: "2" } },
+      { input: 1, state: { input: "1", operations: [] } },
+      { input: "+", state: { input: "0", operations: ["1", "+"] } },
+      { input: 2, state: { input: "2", operations: ["1", "+"] } },
+      { input: "=", state: { input: "3", operations: [] } },
+      { input: 2, state: { input: "2", operations: [] } },
+    ],
+  },
+  {
+    description: "clears input on next `.` after `=`",
+    sequence: [
+      { input: 1, state: { input: "1", operations: [] } },
+      { input: "+", state: { input: "0", operations: ["1", "+"] } },
+      { input: 2, state: { input: "2", operations: ["1", "+"] } },
+      { input: "=", state: { input: "3", operations: [] } },
+      { input: ".", state: { input: "0.", operations: [] } },
     ],
   },
   {
     description: "uses input on next operation after `=`",
     sequence: [
       { input: 1, state: { input: "1", operations: [] } },
-      { input: "=", state: { input: "1", operations: [] } },
-      { input: "*", state: { input: "0", operations: ["1", "*"] } },
+      { input: "+", state: { input: "0", operations: ["1", "+"] } },
+      { input: 2, state: { input: "2", operations: ["1", "+"] } },
+      { input: "=", state: { input: "3", operations: [] } },
+      { input: "*", state: { input: "0", operations: ["3", "*"] } },
     ],
   },
   {
