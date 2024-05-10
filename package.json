@@ -22,7 +22,7 @@
   "dependencies": {
     "clsx": "^2.0.0",
     "js-big-decimal": "^2.0.4",
-    "next": "14.0.2",
+    "next": "14.1.1",
     "react": "^18",
     "react-dom": "^18",
     "sharp": "^0.32.6"
